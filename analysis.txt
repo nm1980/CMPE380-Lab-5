@@ -1,0 +1,51 @@
+The main implementations done in Lab 5 were the search functions for
+both DynamicArrays.c and LinkedLists.c, and the Makefile that is used
+to test TestSearch.c, which uses both of the search functions
+implemented. In DynamicArrays.c, the function SearchDArray was
+implemented to search through a dynamic array given for a specific
+string input, and then return the pointer that is connected to the
+string. First Data and int variables are created to keep track of the
+pointer and amount of entries in the array, with the Data variable
+"result" being initially set to NULL just in case no matching string is
+found in the array. Then a for loop runs based on the amount of entries
+in the dynamic array, and each time checks the string in the pointer
+position to see if it matched with the string inputted by using strcmp.
+If they are equal, the return value "result" is set to the value of the
+pointer where the dynamic array string was found and the loop ends. If
+there's no matching string in the dynamic array, then NULL is returned
+instead. In LinkedLists.c, the function SearchList was implemented to search
+through a given linked list to find the specific string input. The
+initial setup for the function involves setting the return value
+"foundWord" to 0 just in case the string inputted couldn't be found in
+the linked list, and then a temporary linked list node is created that
+is based on the front node of the linked list inputted. Using this
+temporary node, it is checked repeatedly using a while loop and runs
+through all the nodes in the linked list until the node is NULL. The
+basic loop follows the structure of checking if the string in the
+temporary node matches with the string inputted using strcmp, and then
+if it does match, the return value "foundWord" is set to 1, and the loop
+is stopped and returns 1. The loop then sets the temporary node to the
+next one within it until all nodes have been checked, in which 0 is
+returned instead. With these two search functions, TestSearch.c was tested 
+using aMakefile to allow for easier project compilation, testing, and memory
+analysis with Valgrind. The main characteristics within the Makefile
+include macrovariables to store compiler flags, file names,
+searchwords, and output files, directives for PHONY and SILENT to
+prevent errors in execution, specific compilation with "%.o: %.c" to
+ensure only updated files get recompiled, and object file linking for
+the .c files. The commands done for the Makefile were "all" to build
+TestSearch, "test" to run TestSearch and store results inside of
+out.txt using a valid input of the macro SEARCHWORD (space) and an
+invalid input, "mem" to run a Valgrind memory check on TestSearch
+along with storing the output results in mem.txt, "help" to display
+list of valid make commands, and "clean" to get rid of all temporary
+files. The verification of the search functions were done using
+TestSearch and the Makefile, and proved to show that they worked as
+intended due to no errors from the Makefile and displaying correct
+outputs inside of out.txt and mem.txt, ensuring that the code still
+fufills all requirements and has no memory issues. TestSearch worked
+as intended and was able to correctly find the string "space" inside
+of both linked list and dynamic array. The Makefile fulfilled all of
+the function requirements, correctly compiling and linking the .c
+files into .o files along with running the commands given and cleaning
+up all the temporary files correctly.
